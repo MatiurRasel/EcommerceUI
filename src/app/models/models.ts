@@ -3,3 +3,8 @@ export interface Category {
     category: string;
     subcategory: string;
 }
+
+export interface SuggestedProduct {
+    banerimage: string;
+    category: Category;
+}
