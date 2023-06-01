@@ -1,5 +1,5 @@
 import { Directive, HostListener, Input } from '@angular/core';
-import { Category } from './models/models';
+import { Category } from '../models/models';
 import { Router } from '@angular/router';
 
 @Directive({
