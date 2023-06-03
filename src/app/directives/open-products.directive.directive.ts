@@ -10,13 +10,13 @@ export class OpenProductsDirectiveDirective {
   @Input() category: Category = {
     id:0,
     category:'',
-    subcategory:'',
+    subCategory:'',
   };
   @HostListener('click') openProducts() {
     this.router.navigate(['/products'],{
       queryParams: {
         category: this.category.category,
-        subcategory: this.category.subcategory,
+        subCategory: this.category.subCategory,
       },
     });
   }

@@ -14,7 +14,7 @@ export class HomeComponent  implements OnInit{
       category: {
         id: 0,
         category: 'electronics',
-        subcategory: 'mobiles',
+        subCategory: 'mobiles',
       },
     },
     {
@@ -22,7 +22,7 @@ export class HomeComponent  implements OnInit{
       category: {
         id: 1,
         category: 'electronics',
-        subcategory: 'laptops',
+        subCategory: 'laptops',
       },
     },
     {
@@ -30,7 +30,7 @@ export class HomeComponent  implements OnInit{
       category: {
         id: 1,
         category: 'furniture',
-        subcategory: 'chairs',
+        subCategory: 'chairs',
       },
     },
   ];

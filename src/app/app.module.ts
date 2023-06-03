@@ -18,6 +18,9 @@ import { OpenProductsDirectiveDirective } from './directives/open-products.direc
 import { OpenProductDetailsDirective } from './directives/open-product-details.directive';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { JwtModule } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,17 @@ import { LoginComponent } from './login/login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('user');
+        },
+        allowedDomains: ['localhost:7220'],
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

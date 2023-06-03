@@ -14,7 +14,7 @@ align-items-center">
                         <li class="text-center fw-bold">{{item.category | titlecase}}</li>
                         <li *ngFor="let subcategory of item.subcategories" [style.cursor]="'pointer'">
                             <a class="dropdown-item" OpenProductsDirective 
-                            [category]="{id:0, 'category':item.category, 'subcategory': subcategory}">
+                            [category]="{id:0, 'category':item.category, 'subCategory': subcategory}">
                                 {{subcategory | titlecase}}
                             </a>
                         </li>
@@ -28,14 +28,23 @@ align-items-center">
         <div class="btn-group btn-group-lg me-2" role="group">
             <button type="button" class="btn btn-outline-light"
             data-bs-toggle="modal" data-bs-target="#generalModal"
-            (click)="openModal('login')">Login</button>
+            (click)="openModal('login')"
+            *ngIf="!utilityService.isLoggedIn()">Login</button>
             <button type="button" class="btn btn-outline-light"
             data-bs-toggle="modal" data-bs-target="#generalModal"
-            (click)="openModal('register')">Register</button>
-            <button type="button" class="btn btn-outline-light">Account</button>
-            <button type="button" class="btn btn-outline-light" routerLink="/cart">Cart</button>
-            <button type="button" class="btn btn-outline-light" routerLink="/orders">Orders</button>
-            <button type="button" class="btn btn-outline-light">Logout</button>
+            (click)="openModal('register')"
+            *ngIf="!utilityService.isLoggedIn()">Register</button>
+            <button type="button" class="btn btn-outline-light" 
+            *ngIf="utilityService.isLoggedIn()">Account</button>
+            <button type="button" class="btn btn-outline-light" routerLink="/cart"
+            *ngIf="utilityService.isLoggedIn()">
+            Cart
+            <span class="badge bg-warning text-dark">{{cartItems}}</span>
+        </button>
+            <button type="button" class="btn btn-outline-light" routerLink="/orders"
+            *ngIf="utilityService.isLoggedIn()">Orders</button>
+            <button type="button" class="btn btn-outline-light" (click)="utilityService.logoutUser()"
+            *ngIf="utilityService.isLoggedIn()">Logout</button>
         </div>
     </div>
 </header>
